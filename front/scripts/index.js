@@ -1,5 +1,12 @@
+// Utiliza jQuery para hacer la solicitud AJAX y manipular el DOM
 $.get("https://students-api.up.railway.app/movies", (data) => {
   Rendercards(data); // Llama a la función Rendercards con los datos obtenidos
+});
+
+// Agrega un evento de escucha al campo de búsqueda
+$("#buscador").on("input", function () {
+  const searchTerm = $(this).val().toLowerCase();
+  filterCards(searchTerm);
 });
 
 const Rendercards = (data) => {
@@ -8,72 +15,74 @@ const Rendercards = (data) => {
       this.pelicula = pelicula;
     }
     generarTarjeta() {
-      // Crea la estructura de la tarjeta
-      const cardContainer = document.createElement("div");
-      cardContainer.classList.add("card-container");
+      // Crea la estructura de la tarjeta utilizando Bootstrap
+      const card = $("<div>").addClass("card");
+      const cardImg = $("<img>")
+        .attr("src", this.pelicula.poster)
+        .addClass("first-content");
 
-      const myCard = document.createElement("div");
-      myCard.classList.add("myCard");
+      const cardBody = $("<div>").addClass("card-body");
+      const cardTitle = $("<h5>")
+        .addClass("card-title")
+        .text(this.pelicula.title);
 
-      const innerCard = document.createElement("div");
-      innerCard.classList.add("innerCard");
+      // Añade todos los datos de la película a la tarjeta
+      const cardText = $("<p>").addClass("second-content").html(`
+          <strong>Año:</strong> ${this.pelicula.year}<br>
+          <strong>Director:</strong> ${this.pelicula.director}<br>
+          <strong>Duración:</strong> ${this.pelicula.duration}<br>
+          <strong>Género:</strong> ${this.pelicula.genre.join(", ")}<br>
+          <strong>Rate:</strong> ${this.generarEstrellas(
+            this.pelicula.rate
+          )}<br>
+        `);
 
-      const frontSide = document.createElement("div");
-      frontSide.classList.add("frontSide");
+      cardBody.append(cardTitle, cardText);
+      card.append(cardImg, cardBody);
 
-      const frontImg = document.createElement("img");
-      frontImg.src = this.pelicula.poster;
-      frontImg.alt = this.pelicula.title;
-      frontImg.classList.add("front-img");
+      return card;
+    }
 
-      frontSide.appendChild(frontImg);
+    // Función para generar las estrellas según la clasificación
+    generarEstrellas(rate) {
+      const estrellas = [];
+      const maxEstrellas = 5;
+      const rating = Math.round(rate * 2) / 2; // Redondea al medio punto más cercano
 
-      const backSide = document.createElement("div");
-      backSide.classList.add("backSide");
+      for (let i = 1; i <= maxEstrellas; i++) {
+        if (i <= rating) {
+          estrellas.push('<i class="fas fa-star"></i>'); // Estrella completa
+        } else if (i - rating <= 0.5) {
+          estrellas.push('<i class="fas fa-star-half-alt"></i>'); // Media estrella
+        } else {
+          estrellas.push('<i class="far fa-star"></i>'); // Estrella vacía
+        }
+      }
 
-      const title = document.createElement("h2");
-      title.classList.add("title");
-      title.textContent = this.pelicula.title;
-
-      const year = document.createElement("p");
-      year.textContent = `Año: ${this.pelicula.year}`;
-
-      const director = document.createElement("p");
-      director.textContent = `Director: ${this.pelicula.director}`;
-
-      const duration = document.createElement("p");
-      duration.textContent = `Duración: ${this.pelicula.duration}`;
-
-      const genre = document.createElement("p");
-      genre.textContent = `Género: ${this.pelicula.genre.join(", ")}`;
-
-      const rate = document.createElement("p");
-      rate.textContent = `Calificación: ${this.pelicula.rate}`;
-
-      backSide.appendChild(title);
-      backSide.appendChild(year);
-      backSide.appendChild(director);
-      backSide.appendChild(duration);
-      backSide.appendChild(genre);
-      backSide.appendChild(rate);
-
-      innerCard.appendChild(frontSide);
-      innerCard.appendChild(backSide);
-
-      myCard.appendChild(innerCard);
-      cardContainer.appendChild(myCard);
-
-      return cardContainer;
+      return estrellas.join(""); // Devuelve las estrellas como un string
     }
   }
 
+  // Función para filtrar las tarjetas según el término de búsqueda
+  const filterCards = (searchTerm) => {
+    $(".card").each(function () {
+      const cardTitle = $(this).find(".card-title").text().toLowerCase();
+      if (cardTitle.includes(searchTerm)) {
+        $(this).show(); // Muestra la tarjeta si coincide con el término de búsqueda
+      } else {
+        $(this).hide(); // Oculta la tarjeta si no coincide con el término de búsqueda
+      }
+    });
+  };
+
   // Genera las tarjetas y añádelas al contenedor en el DOM
-  const contenedorTarjetas = document.getElementById("contenedor-tarjetas");
-  contenedorTarjetas.innerHTML = ""; // Limpia el contenido actual del contenedor
+  const cardDeck = $("#contenedor-tarjetas");
+  cardDeck.empty();
 
   data.forEach((pelicula) => {
     const tarjeta = new Tarjeta(pelicula);
     const tarjetaHTML = tarjeta.generarTarjeta();
-    contenedorTarjetas.appendChild(tarjetaHTML); // Agrega la tarjeta al contenedor
+    tarjetaHTML.addClass("ml-auto"); // Alinea la tarjeta a la derecha
+    cardDeck.append(tarjetaHTML); // Agrega la tarjeta al contenedor
   });
 };

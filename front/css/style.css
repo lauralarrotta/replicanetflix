@@ -1,154 +1,203 @@
 :root {
     --rojo: #E50914;
-    --fondo: #141414;
+    --fondo: #000000;
+    --primario: #ff3700;
 }
-
 
 body {
     background: var(--fondo);
     font-family: "Open Sans", sans-serif;
 }
 
-header {
-    padding: 30px 0;
-}
-
-.contenedor {
-    width: 90%;
-    margin: auto;
-}
-
-header .contenedor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logo {
-    font-family: "Bebas Neue", sans-serif;
-    color: var(--rojo);
-    font-size: 40px;
-}
-
-
-header nav a {
-    color: #AAA;
-    text-decoration: none;
-    margin-top: 20px;
-    padding: 30px;
-}
-
-header nav a:hover,
-header nav a.active {
-    color: #FFFF;
-
-}
-
 h2 {
-    color: #ffff;
     text-align: center;
-    font-size: 100px;
+    margin-bottom: 5rem;
+    color: aliceblue;
 }
 
-.card-container {
-    display: flex;
-    padding: 50px;
-    justify-content: center;
-}
+/* Header */
 
-.myCard {
-    background-color: transparent;
-    width: 350px;
-    height: 620px;
-    perspective: 1000px;
-}
 
-.title {
-
-    font-size: 1.5em;
-    font-weight: 900;
-    text-align: center;
-    margin: 0;
-}
-
-.innerCard {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-.myCard:hover .innerCard {
-    transform: rotateY(180deg);
-}
-
-.frontSide,
-.backSide {
+.d-flex {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 1rem;
-    color: white;
-    box-shadow: 0 0 0.3em rgba(255, 255, 255, 0.5);
-    font-weight: 700;
+    padding: 30px;
+    z-index: 20;
+
 }
 
-.frontSide,
-.frontSide::before {
-    background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+.logo {
+    font-size: 40px;
+    color: var(--rojo);
+    letter-spacing: 1px;
+    font-weight: 800;
+    text-decoration: none;
 }
 
-.backSide,
-.backSide::before {
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+.logo:hover {
+    color: var(--rojo);
 }
 
-.backSide {
-    transform: rotateY(180deg);
+.nav {
+    display: flex;
 }
 
-.frontSide::before,
-.backSide::before {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    content: '';
-    width: 110%;
-    height: 110%;
+.nav li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.nav li a {
+    color: #ffff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.nav li a:hover {
+    color: var(--rojo)
+}
+
+.nav li a.active {
+    color: var(--rojo);
+}
+
+.search {
+    position: relative;
+    width: 300px;
+    height: 40px;
+}
+
+
+.search input {
     position: absolute;
-    z-index: -1;
-    border-radius: 1em;
-    filter: blur(20px);
-    animation: animate 5s linear infinite;
-}
-
-.front-img {
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    color: #ffff;
+    background: transparent;
+    border: 1 solid rgba(0, 0, 0, 0.5);
+    outline: none;
+    border-radius: 4px;
+    padding: 0 10px 0 45px !important;
+}
+
+.search input::placeholder {
+    color: #ffff;
+}
+
+.search i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    padding-right: 10px;
+    color: #ffff;
+    border-right: 1px solid #ffff;
+}
+
+
+.card {
+    width: 190px;
+    height: 254px;
+    background: rgb(103, 225, 255);
+    transition: all 0.4s;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.card-title {
+    color: aliceblue;
+}
+
+
+.card:hover {
+    border-radius: 15px;
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
+    background: rgb(255, 103, 103);
+}
+
+.first-content {
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    border-radius: 15px;
+}
+
+.card-deck {
+    margin-left: 30px;
 
 }
 
-@keyframes animate {
-    0% {
-        opacity: 0.3;
-    }
+#tarjetas {
+    margin-top: 100px;
+    right: 100px;
+    /* Ajusta el valor según el espacio que desees */
+}
 
-    80% {
-        opacity: 1;
-    }
+.card:hover .first-content {
+    height: 0px;
+    opacity: 0;
+}
 
-    100% {
-        opacity: 0.3;
-    }
+.second-content {
+    color: aliceblue;
+    height: 0%;
+    width: 100%;
+    opacity: 0;
+    border-radius: 15px;
+    transition: all 0.4s;
+    font-size: 10px;
+    transform: rotate(90deg) scale(-1);
+}
+
+.card:hover .second-content {
+    opacity: 1;
+    height: 100%;
+    font-size: 0.5rem;
+    transform: rotate(0deg);
+}
+
+
+
+
+.carousel::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    /* Ajusta la posición para que el degradado comience desde arriba */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    /* Utiliza un gradiente lineal para el degradado */
+    z-index: 10;
+}
+
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 1000;
+    /* Ajusta el valor según sea necesario para que los botones estén por encima del contenido */
 }

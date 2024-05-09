@@ -1,0 +1,29 @@
+/* Reset CSS */
+html {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.6;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+}
