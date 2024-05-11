@@ -1,4 +1,4 @@
-import renderCards from "./scripts/renderCards";
+const renderCards = require("./scripts/renderCards");
 
 // Utiliza jQuery para hacer la solicitud AJAX y manipular el DOM
 $.get("https://students-api.up.railway.app/movies", function (data, status) {
