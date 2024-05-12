@@ -3,7 +3,7 @@ function renderCards(data) {
   const cardDeck = $("#contenedor-tarjetas");
   cardDeck.empty();
 
-  data.forEach(function (pelicula) {
+  data.forEach(function (pelicula, index) {
     const card = $("<div>").addClass("card");
     const cardImg = $("<img>")
       .attr("src", pelicula.poster)
@@ -15,7 +15,7 @@ function renderCards(data) {
       <strong>Director:</strong> ${pelicula.director}<br>
       <strong>Duración:</strong> ${pelicula.duration}<br>
       <strong>Género:</strong> ${pelicula.genre.join(", ")}<br>
-      <strong>Rate:</strong> ${generateStars(pelicula.rate)}<br>
+      <strong>Rate:</strong> ${generateStars(pelicula.rate, index)}<br>
     `);
 
     cardBody.append(cardTitle, cardText);
@@ -31,23 +31,35 @@ function renderCards(data) {
     });
   });
 
-  function generateStars(rate) {
+  // Función para generar las estrellas según la calificación y el índice de la tarjeta
+  function generateStars(rate, index) {
     let stars = "";
     const maxStars = 5;
     const rating = Math.round(rate * 2) / 2;
 
     for (let i = 1; i <= maxStars; i++) {
+      const star = $("<i>")
+        .addClass("star fas fa-star")
+        .attr("data-index", index);
       if (i <= rating) {
-        stars += '<i class="fas fa-star"></i>';
-      } else if (i - rating <= 0.5) {
-        stars += '<i class="fas fa-star-half-alt"></i>';
-      } else {
-        stars += '<i class="far fa-star"></i>';
+        star.addClass("filled");
       }
+      stars += star[0].outerHTML;
     }
 
-    return stars;
+    return `<div class="star-container">${stars}</div>`;
   }
+
+  // Evento de clic para las estrellas
+  $(document).on("click", ".star", function () {
+    const index = $(this).attr("data-index");
+    const card = $(".card").eq(index);
+    const stars = card.find(".star");
+    const clickedStarIndex = stars.index(this);
+
+    stars.removeClass("filled");
+    stars.slice(0, clickedStarIndex + 1).addClass("filled");
+  });
 }
 
 module.exports = renderCards;
