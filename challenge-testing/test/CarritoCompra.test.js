@@ -11,19 +11,19 @@ describe("CarritoCompra", () => {
   });
 
   // Prueba para comprobar que se inicializa correctamente como un array vacío
-  test("Se inicializa como un array vacío", () => {
+  it("Se inicializa como un array vacío", () => {
     expect(carrito.productos).toEqual([]);
   });
 
   // Prueba para agregar un producto al carrito
-  test("Agregar producto al carrito", () => {
+  it("Agregar producto al carrito", () => {
     const producto = { nombre: "Producto 1", precio: 50 };
     carrito.agregarProducto(producto);
     expect(carrito.productos).toContainEqual(producto);
   });
 
   // Prueba para calcular el total de la compra sin descuento
-  test("Calcular total de la compra sin descuento", () => {
+  it("Calcular total de la compra sin descuento", () => {
     carrito.agregarProducto({ nombre: "Producto 1", precio: 50 });
     carrito.agregarProducto({ nombre: "Producto 2", precio: 30 });
     carrito.agregarProducto({ nombre: "Producto 3", precio: 20 });
@@ -31,7 +31,7 @@ describe("CarritoCompra", () => {
   });
 
   // Prueba para aplicar un descuento al total de la compra
-  test("Aplicar descuento al total de la compra", () => {
+  it("Aplicar descuento al total de la compra", () => {
     carrito.agregarProducto({ nombre: "Producto 1", precio: 50 });
     carrito.agregarProducto({ nombre: "Producto 2", precio: 30 });
     carrito.agregarProducto({ nombre: "Producto 3", precio: 20 });
