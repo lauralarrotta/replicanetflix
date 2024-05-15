@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!---link jquery Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./public/bundle.js"></script>
+
+    <!---titulo del documento-->
+    <title>Netflix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!---links Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Importa Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Iconos Boostraps -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!---links estilos-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="body__index">
+
+    <header>
+        <!--Navegador -->
+        <nav class="navbar navbar-expand-lg netflix-navbar netflix-padding-left netflix-padding-right">
+            <div class="container-fluid">
+                <div class="netflix-row">
+                    <!--left-->
+                    <div class="left d-flex align-items-center">
+                        <a class="navbar-brand" href="/front/loginpage.html"><img class="logo2"
+                                src="./assets/netflix logo.png" alt=""></a>
+                        <!--tabs-->
+                        <div class="netflix-nav">
+                            <a href="./index.html"><button>Home</button></a>
+                            <button>Tv Shows</button>
+                            <button>Movies</button>
+                            <a href="#Popular"><button>News & Popular</button></a>
+                            <button>My list</button>
+                            <button>kids</button>
+                            <a href="./loginpage.html"><button>Sing in</button></a>
+                        </div>
+                        <!--dropdown-->
+                        <div class="netflix-dropdown-box dropdown">
+                            <button class="netflix-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Browse
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Home</a></li>
+                                <li><a class="dropdown-item" href="#">Tv Shows</a></li>
+                                <li><a class="dropdown-item" href="#">Movies</a></li>
+                                <li><a class="dropdown-item" href="#Popular">News & Popular</a></li>
+                                <li><a class="dropdown-item" href="#">My list</a></li>
+                                <li><a class="dropdown-item" href="#">kids</a></li>
+                                <li><a class="dropdown-item" href="./loginpage.html">Sing in</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!--rigth-->
+                    <section class="right d-flex align-items-center">
+                        <i class="bi bi-search"></i>
+                        <i class="bi bi-bell-fill"></i>
+                        <div class="netflix-profile"></div>
+                    </section>
+                </div>
+        </nav>
+        <!--.Navegador-->
+    </header>
+
+
+    <!--Video-->
+    <div class="">
+        <section class="netflix-home-video">
+            <div class="top"></div>
+            <div class="bottom"></div>
+            <video id="myVideo" src="./video/trailergalaxia.mp4" autoplay muted loop></video>
+            <div class="content">
+                <section class="left ">
+                    <img src="./assets/guardianes1.png" alt="">
+                    <div class="mt-1 d-flex align-content-center">
+                        <button type="button" class="btn btn-light m-2"><i class="bi bi-play-fill"></i>Play Now</button>
+                        <button type="button" class="btn btn-secondary m-2"><i class="bi bi-info-circle"></i>More
+                            info</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+    <!--.Video-->
+
+    <!-- Importa jQuery y Popper.js al final del body -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <!-- Importa Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- navegador Js -->
+    <script src="./scripts/navegador.js"></script>
+    <!-- importando Axios en nuestro documento HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>
