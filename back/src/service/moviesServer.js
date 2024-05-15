@@ -1,3 +1,21 @@
+//implementar la clase Movie
+class Movie {
+  constructor(title, year, director, duration, genre, rate, poster) {
+    if (!title || !poster || !director) {
+      throw new Error(
+        "No se proporcionaron todas las propiedades necesarias para crear una instancia de Movie"
+      );
+    }
+    this.title = title;
+    this.year = year;
+    this.director = director;
+    this.duration = duration;
+    this.genre = genre;
+    this.rate = rate;
+    this.poster = poster;
+  }
+}
+
 module.exports = {
   // Función para obtener datos de la API de películas
   getAllmovies: () => {
@@ -33,6 +51,19 @@ module.exports = {
           "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
       },
     ];
-    return movie;
+    //
+    const movies = movie.map(
+      (movie) =>
+        new Movie(
+          movie.title,
+          movie.year,
+          movie.director,
+          movie.duration,
+          movie.genre,
+          movie.rate,
+          movie.poster
+        )
+    );
+    return movies;
   },
 };
