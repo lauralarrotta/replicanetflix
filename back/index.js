@@ -1,7 +1,5 @@
 const app = require("./src/service/server");
 
-const router = require("./src/routes");
-
-app.listen(3000, () => {});
-
-module.exports = router;
+app.listen(3000, () => {
+  console.log("Servidor escuchando en el puerto 3000");
+});
