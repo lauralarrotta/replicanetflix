@@ -19,6 +19,7 @@ function renderCards(data) {
       <strong>Género:</strong> ${pelicula.genre.join(", ")}<br>
       <strong>Rate:</strong> ${pelicula.rate}<br>
     `);
+
     const stars = generateStars(pelicula.rate);
 
     cardBody.append(cardTitle, cardText, stars); // Inserta las estrellas en el cuerpo de la tarjeta

@@ -1,4 +1,5 @@
 const moviesService = require("../service/moviesServer");
+const validarMovieData = require("../middleware/validarMovieData");
 
 module.exports = {
   getAllmovies: async (req, res) => {
@@ -16,6 +17,12 @@ module.exports = {
   getMovieById: async (req, res) => {
     const { id } = req.params;
     const movie = await moviesService.getMovieById(id);
+    res.status(200).json(movie);
+  },
+
+  getMovieByTitle: async (req, res) => {
+    const { title } = req.body;
+    const movie = await moviesService.findMovieByTitle(title);
     res.status(200).json(movie);
   },
 

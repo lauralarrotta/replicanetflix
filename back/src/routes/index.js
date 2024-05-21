@@ -3,15 +3,15 @@
 
 const { Router } = require("express");
 const testController = require("../controllers");
+const validarMovieData = require("../middleware/validarMovieData");
 const router = Router();
 
-//obtener las pelicualas de mongoose
+router.post("/movies", validarMovieData, testController.createMovies);
+
 router.get("/movies", testController.getAllmovies);
 
-// obtener las peliculas con Id
 router.get("/movies/:id", testController.getMovieById);
 
-// agregar peliculas a la base de datos
-router.post("/movies", testController.createMovies);
+router.post("/movies/title", testController.getMovieByTitle);
 
 module.exports = router;
