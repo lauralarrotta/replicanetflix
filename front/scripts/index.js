@@ -1,7 +1,13 @@
+const { initializeForm } = require("./CreateMovie");
+
+// Inicializar el formulario
+initializeForm();
+
+// El resto de tu código para renderizar las tarjetas
 const renderCards = require("./renderCards");
 const axios = require("axios");
 
-//Solicitud GET a la URL proporcionada, que es la API de películas.
+// Solicitud GET a la URL proporcionada, que es la API de películas.
 axios
   .get("http://localhost:3000/movies")
   .then((response) => {

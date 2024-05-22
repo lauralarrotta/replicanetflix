@@ -1,5 +1,57 @@
 (() => {
   var e = {
+      542: (e, t, n) => {
+        const r = n(425);
+        function o() {
+          (document.getElementById("title").value = ""),
+            (document.getElementById("year").value = ""),
+            (document.getElementById("Director").value = ""),
+            (document.getElementById("Duration").value = ""),
+            (document.getElementById("Genre").value = ""),
+            (document.getElementById("rate").value = ""),
+            (document.getElementById("url").value = "");
+        }
+        e.exports = {
+          limpiarInputs: o,
+          initializeForm: function () {
+            document.addEventListener("DOMContentLoaded", () => {
+              document
+                .getElementById("form")
+                .addEventListener("submit", async (e) => {
+                  e.preventDefault();
+                  const t = {
+                    title: document.getElementById("title").value.trim(),
+                    year: document.getElementById("year").value.trim(),
+                    director: document.getElementById("Director").value.trim(),
+                    duration: document.getElementById("Duration").value.trim(),
+                    genre: document.getElementById("Genre").value.trim(),
+                    rate: document.getElementById("rate").value.trim(),
+                    poster: document.getElementById("url").value.trim(),
+                  };
+                  if (
+                    t.title &&
+                    t.year &&
+                    t.director &&
+                    t.duration &&
+                    t.genre &&
+                    t.rate &&
+                    t.poster
+                  )
+                    try {
+                      const e = await r.post("http://localhost:3000/movies", t);
+                      alert("Datos enviados correctamente", e.data), o();
+                    } catch (e) {
+                      console.error("Error al agregar película:", e),
+                        alert(
+                          "Hubo un error al agregar la película. Por favor, inténtalo de nuevo."
+                        );
+                    }
+                  else alert("Por favor completa todos los campos.");
+                });
+            });
+          },
+        };
+      },
       107: (e) => {
         e.exports = function (e) {
           const t = $("<div>").addClass("stars-container");
@@ -79,11 +131,11 @@
             );
           },
           b = c("Date"),
-          w = c("File"),
-          E = c("Blob"),
+          E = c("File"),
+          w = c("Blob"),
           O = c("FileList"),
           S = c("URLSearchParams");
-        function R(e, t, { allOwnKeys: n = !1 } = {}) {
+        function v(e, t, { allOwnKeys: n = !1 } = {}) {
           if (null == e) return;
           let r, o;
           if (("object" != typeof e && (e = [e]), l(e)))
@@ -95,7 +147,7 @@
             for (r = 0; r < s; r++) (i = o[r]), t.call(null, e[i], i, e);
           }
         }
-        function A(e, t) {
+        function R(e, t) {
           t = t.toLowerCase();
           const n = Object.keys(e);
           let r,
@@ -103,7 +155,7 @@
           for (; o-- > 0; ) if (((r = n[o]), t === r.toLowerCase())) return r;
           return null;
         }
-        const v =
+        const A =
             "undefined" != typeof globalThis
               ? globalThis
               : "undefined" != typeof self
@@ -111,7 +163,7 @@
               : "undefined" != typeof window
               ? window
               : n.g,
-          T = (e) => !f(e) && e !== v,
+          T = (e) => !f(e) && e !== A,
           j =
             ((C = "undefined" != typeof Uint8Array && s(Uint8Array)),
             (e) => C && e instanceof C);
@@ -123,19 +175,19 @@
               e.call(t, n)
           )(Object.prototype),
           P = c("RegExp"),
-          _ = (e, t) => {
+          B = (e, t) => {
             const n = Object.getOwnPropertyDescriptors(e),
               r = {};
-            R(n, (n, o) => {
+            v(n, (n, o) => {
               let s;
               !1 !== (s = t(n, o, e)) && (r[o] = s || n);
             }),
               Object.defineProperties(e, r);
           },
-          F = "abcdefghijklmnopqrstuvwxyz",
-          U = "0123456789",
-          B = { DIGIT: U, ALPHA: F, ALPHA_DIGIT: F + F.toUpperCase() + U },
-          D = c("AsyncFunction");
+          _ = "abcdefghijklmnopqrstuvwxyz",
+          F = "0123456789",
+          D = { DIGIT: F, ALPHA: _, ALPHA_DIGIT: _ + _.toUpperCase() + F },
+          U = c("AsyncFunction");
         var L = {
           isArray: l,
           isArrayBuffer: d,
@@ -178,20 +230,20 @@
           isPlainObject: y,
           isUndefined: f,
           isDate: b,
-          isFile: w,
-          isBlob: E,
+          isFile: E,
+          isBlob: w,
           isRegExp: P,
           isFunction: h,
           isStream: (e) => g(e) && h(e.pipe),
           isURLSearchParams: S,
           isTypedArray: j,
           isFileList: O,
-          forEach: R,
+          forEach: v,
           merge: function e() {
             const { caseless: t } = (T(this) && this) || {},
               n = {},
               r = (r, o) => {
-                const s = (t && A(n, o)) || o;
+                const s = (t && R(n, o)) || o;
                 y(n[s]) && y(r)
                   ? (n[s] = e(n[s], r))
                   : y(r)
@@ -201,11 +253,11 @@
                   : (n[s] = r);
               };
             for (let e = 0, t = arguments.length; e < t; e++)
-              arguments[e] && R(arguments[e], r);
+              arguments[e] && v(arguments[e], r);
             return n;
           },
           extend: (e, t, n, { allOwnKeys: o } = {}) => (
-            R(
+            v(
               t,
               (t, o) => {
                 n && h(t) ? (e[o] = r(t, n)) : (e[o] = t);
@@ -272,9 +324,9 @@
           isHTMLForm: x,
           hasOwnProperty: N,
           hasOwnProp: N,
-          reduceDescriptors: _,
+          reduceDescriptors: B,
           freezeMethods: (e) => {
-            _(e, (t, n) => {
+            B(e, (t, n) => {
               if (h(e) && -1 !== ["arguments", "caller", "callee"].indexOf(n))
                 return !1;
               const r = e[n];
@@ -307,11 +359,11 @@
               }),
           noop: () => {},
           toFiniteNumber: (e, t) => ((e = +e), Number.isFinite(e) ? e : t),
-          findKey: A,
-          global: v,
+          findKey: R,
+          global: A,
           isContextDefined: T,
-          ALPHABET: B,
-          generateString: (e = 16, t = B.ALPHA_DIGIT) => {
+          ALPHABET: D,
+          generateString: (e = 16, t = D.ALPHA_DIGIT) => {
             let n = "";
             const { length: r } = t;
             for (; e--; ) n += t[(Math.random() * r) | 0];
@@ -334,7 +386,7 @@
                     t[r] = e;
                     const o = l(e) ? [] : {};
                     return (
-                      R(e, (e, t) => {
+                      v(e, (e, t) => {
                         const s = n(e, r + 1);
                         !f(s) && (o[t] = s);
                       }),
@@ -347,7 +399,7 @@
               };
             return n(e, 0);
           },
-          isAsyncFn: D,
+          isAsyncFn: U,
           isThenable: (e) => e && (g(e) || h(e)) && h(e.then) && h(e.catch),
         };
         function k(e, t, n, r, o) {
@@ -382,8 +434,8 @@
             };
           },
         });
-        const q = k.prototype,
-          I = {};
+        const I = k.prototype,
+          q = {};
         function z(e) {
           return L.isPlainObject(e) || L.isArray(e);
         }
@@ -414,12 +466,12 @@
           "ERR_NOT_SUPPORT",
           "ERR_INVALID_URL",
         ].forEach((e) => {
-          I[e] = { value: e };
+          q[e] = { value: e };
         }),
-          Object.defineProperties(k, I),
-          Object.defineProperty(q, "isAxiosError", { value: !0 }),
+          Object.defineProperties(k, q),
+          Object.defineProperty(I, "isAxiosError", { value: !0 }),
           (k.from = (e, t, n, r, o, s) => {
-            const i = Object.create(q);
+            const i = Object.create(I);
             return (
               L.toFlatObject(
                 e,
@@ -1092,7 +1144,7 @@
               },
             }
           : { write() {}, read: () => null, remove() {} };
-        function we(e, t) {
+        function Ee(e, t) {
           return e && !/^([a-z][a-z\d+\-.]*:)?\/\//i.test(t)
             ? (function (e, t) {
                 return t
@@ -1101,7 +1153,7 @@
               })(e, t)
             : t;
         }
-        var Ee = oe.hasStandardBrowserEnv
+        var we = oe.hasStandardBrowserEnv
           ? (function () {
               const e = /(msie|trident)/i.test(navigator.userAgent),
                 t = document.createElement("a");
@@ -1222,7 +1274,7 @@
                       : "";
                   o.set("Authorization", "Basic " + btoa(t + ":" + n));
                 }
-                const f = we(e.baseURL, e.url);
+                const f = Ee(e.baseURL, e.url);
                 function d() {
                   if (!l) return;
                   const r = he.from(
@@ -1307,7 +1359,7 @@
                   }),
                   oe.hasStandardBrowserEnv &&
                     (c && L.isFunction(c) && (c = c(e)),
-                    c || (!1 !== c && Ee(f))))
+                    c || (!1 !== c && we(f))))
                 ) {
                   const t =
                     e.xsrfHeaderName &&
@@ -1370,9 +1422,9 @@
             Object.defineProperty(e, "adapterName", { value: t });
           }
         });
-        const Re = (e) => `- ${e}`,
-          Ae = (e) => L.isFunction(e) || null === e || !1 === e;
-        var ve = (e) => {
+        const ve = (e) => `- ${e}`,
+          Re = (e) => L.isFunction(e) || null === e || !1 === e;
+        var Ae = (e) => {
           e = L.isArray(e) ? e : [e];
           const { length: t } = e;
           let n, r;
@@ -1382,7 +1434,7 @@
             if (
               ((n = e[s]),
               (r = n),
-              !Ae(n) && ((r = Se[(t = String(n)).toLowerCase()]), void 0 === r))
+              !Re(n) && ((r = Se[(t = String(n)).toLowerCase()]), void 0 === r))
             )
               throw new k(`Unknown adapter '${t}'`);
             if (r) break;
@@ -1400,8 +1452,8 @@
               "There is no suitable adapter to dispatch the request " +
                 (t
                   ? e.length > 1
-                    ? "since :\n" + e.map(Re).join("\n")
-                    : " " + Re(e[0])
+                    ? "since :\n" + e.map(ve).join("\n")
+                    : " " + ve(e[0])
                   : "as no adapter specified"),
               "ERR_NOT_SUPPORT"
             );
@@ -1422,7 +1474,7 @@
             (e.data = me.call(e, e.transformRequest)),
             -1 !== ["post", "put", "patch"].indexOf(e.method) &&
               e.headers.setContentType("application/x-www-form-urlencoded", !1),
-            ve(e.adapter || ae.adapter)(e).then(
+            Ae(e.adapter || ae.adapter)(e).then(
               function (t) {
                 return (
                   Te(e),
@@ -1563,7 +1615,7 @@
             );
           };
         };
-        var _e = {
+        var Be = {
           assertOptions: function (e, t, n) {
             if ("object" != typeof e)
               throw new k("options must be an object", k.ERR_BAD_OPTION_VALUE);
@@ -1586,8 +1638,8 @@
           },
           validators: Ne,
         };
-        const Fe = _e.validators;
-        class Ue {
+        const _e = Be.validators;
+        class Fe {
           constructor(e) {
             (this.defaults = e),
               (this.interceptors = { request: new Q(), response: new Q() });
@@ -1616,21 +1668,21 @@
               (t = xe(this.defaults, t));
             const { transitional: n, paramsSerializer: r, headers: o } = t;
             void 0 !== n &&
-              _e.assertOptions(
+              Be.assertOptions(
                 n,
                 {
-                  silentJSONParsing: Fe.transitional(Fe.boolean),
-                  forcedJSONParsing: Fe.transitional(Fe.boolean),
-                  clarifyTimeoutError: Fe.transitional(Fe.boolean),
+                  silentJSONParsing: _e.transitional(_e.boolean),
+                  forcedJSONParsing: _e.transitional(_e.boolean),
+                  clarifyTimeoutError: _e.transitional(_e.boolean),
                 },
                 !1
               ),
               null != r &&
                 (L.isFunction(r)
                   ? (t.paramsSerializer = { serialize: r })
-                  : _e.assertOptions(
+                  : Be.assertOptions(
                       r,
-                      { encode: Fe.function, serialize: Fe.function },
+                      { encode: _e.function, serialize: _e.function },
                       !0
                     )),
               (t.method = (
@@ -1695,14 +1747,14 @@
           }
           getUri(e) {
             return X(
-              we((e = xe(this.defaults, e)).baseURL, e.url),
+              Ee((e = xe(this.defaults, e)).baseURL, e.url),
               e.params,
               e.paramsSerializer
             );
           }
         }
         L.forEach(["delete", "get", "head", "options"], function (e) {
-          Ue.prototype[e] = function (t, n) {
+          Fe.prototype[e] = function (t, n) {
             return this.request(
               xe(n || {}, { method: e, url: t, data: (n || {}).data })
             );
@@ -1721,10 +1773,10 @@
                 );
               };
             }
-            (Ue.prototype[e] = t()), (Ue.prototype[e + "Form"] = t(!0));
+            (Fe.prototype[e] = t()), (Fe.prototype[e + "Form"] = t(!0));
           });
-        var Be = Ue;
-        class De {
+        var De = Fe;
+        class Ue {
           constructor(e) {
             if ("function" != typeof e)
               throw new TypeError("executor must be a function.");
@@ -1773,14 +1825,14 @@
           static source() {
             let e;
             return {
-              token: new De(function (t) {
+              token: new Ue(function (t) {
                 e = t;
               }),
               cancel: e,
             };
           }
         }
-        var Le = De;
+        var Le = Ue;
         const ke = {
           Continue: 100,
           SwitchingProtocols: 101,
@@ -1849,12 +1901,12 @@
         Object.entries(ke).forEach(([e, t]) => {
           ke[t] = e;
         });
-        var qe = ke;
-        const Ie = (function e(t) {
-          const n = new Be(t),
-            o = r(Be.prototype.request, n);
+        var Ie = ke;
+        const qe = (function e(t) {
+          const n = new De(t),
+            o = r(De.prototype.request, n);
           return (
-            L.extend(o, Be.prototype, n, { allOwnKeys: !0 }),
+            L.extend(o, De.prototype, n, { allOwnKeys: !0 }),
             L.extend(o, n, null, { allOwnKeys: !0 }),
             (o.create = function (n) {
               return e(xe(t, n));
@@ -1862,32 +1914,32 @@
             o
           );
         })(ae);
-        (Ie.Axios = Be),
-          (Ie.CanceledError = ye),
-          (Ie.CancelToken = Le),
-          (Ie.isCancel = ge),
-          (Ie.VERSION = "1.6.8"),
-          (Ie.toFormData = J),
-          (Ie.AxiosError = k),
-          (Ie.Cancel = Ie.CanceledError),
-          (Ie.all = function (e) {
+        (qe.Axios = De),
+          (qe.CanceledError = ye),
+          (qe.CancelToken = Le),
+          (qe.isCancel = ge),
+          (qe.VERSION = "1.6.8"),
+          (qe.toFormData = J),
+          (qe.AxiosError = k),
+          (qe.Cancel = qe.CanceledError),
+          (qe.all = function (e) {
             return Promise.all(e);
           }),
-          (Ie.spread = function (e) {
+          (qe.spread = function (e) {
             return function (t) {
               return e.apply(null, t);
             };
           }),
-          (Ie.isAxiosError = function (e) {
+          (qe.isAxiosError = function (e) {
             return L.isObject(e) && !0 === e.isAxiosError;
           }),
-          (Ie.mergeConfig = xe),
-          (Ie.AxiosHeaders = he),
-          (Ie.formToJSON = (e) => se(L.isHTMLForm(e) ? new FormData(e) : e)),
-          (Ie.getAdapter = ve),
-          (Ie.HttpStatusCode = qe),
-          (Ie.default = Ie),
-          (e.exports = Ie);
+          (qe.mergeConfig = xe),
+          (qe.AxiosHeaders = he),
+          (qe.formToJSON = (e) => se(L.isHTMLForm(e) ? new FormData(e) : e)),
+          (qe.getAdapter = Ae),
+          (qe.HttpStatusCode = Ie),
+          (qe.default = qe),
+          (e.exports = qe);
       },
     },
     t = {};
@@ -1906,12 +1958,14 @@
     }
   })()),
     (() => {
-      const e = n(989);
+      const { initializeForm: e } = n(542);
+      e();
+      const t = n(989);
       n(425)
         .get("http://localhost:3000/movies")
-        .then((t) => {
-          const n = t.data;
-          e(n);
+        .then((e) => {
+          const n = e.data;
+          t(n);
         })
         .catch((e) => {
           console.error("Error al obtener los datos:", e);

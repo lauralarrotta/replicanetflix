@@ -3,7 +3,7 @@ function generateStars(rate) {
   const starsContainer = $("<div>").addClass("stars-container");
 
   for (let i = 1; i <= 5; i++) {
-    const star = $("<span>").addClass("star").html("&#9733;"); // Puedes cambiar "&#9733;" por el código de tu ícono de estrella
+    const star = $("<span>").addClass("star").html("&#9733;"); // código de tu ícono de estrella
     if (i <= rate) {
       star.addClass("filled"); // Agrega la clase "filled" para estrellas rellenas según la calificación
     }
