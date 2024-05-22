@@ -55,7 +55,7 @@
       107: (e) => {
         e.exports = function (e) {
           const t = $("<div>").addClass("stars-container");
-          for (let n = 1; n <= 5; n++) {
+          for (let n = 1; n <= 10; n++) {
             const r = $("<span>").addClass("star").html("&#9733;");
             n <= e && r.addClass("filled"),
               r.click(function () {

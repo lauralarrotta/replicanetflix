@@ -1,13 +1,13 @@
+/* Define custom CSS variables for colors */
 :root {
     --rojo: #E50914;
     --fondo: #141414;
     --primario: #ff3700;
     --blanco: #ffff;
     --negro: #0c0c0c;
-
 }
 
-
+/* Styling for headings */
 h2 {
     text-align: center;
     margin-bottom: 5rem;
@@ -15,30 +15,33 @@ h2 {
     margin-top: 100px;
 }
 
+/* Styling for paragraphs */
 p {
     font-size: 10px;
 }
 
-/** INDEX.HTML/
+/** INDEX.HTML **/
 
-/* Header */
+/* Header styles */
 
-
+/* Styling for the body of the index page */
 .body__index {
     background-color: var(--fondo);
     overflow-x: hidden;
     position: relative;
 }
 
+/* Padding for the left side */
 .netflix-padding-left {
     padding-left: 57px;
 }
 
-
+/* Padding for the right side */
 .netflix-padding-right {
     padding-right: 57px;
 }
 
+/* Styling for the navbar */
 .netflix-navbar {
     /* background-color: var(--negro); */
     position: fixed;
@@ -47,6 +50,7 @@ p {
     transition: background 0.2s linear;
 }
 
+/* Styling for rows in the navbar */
 .netflix-row {
     width: 100%;
     display: flex;
@@ -54,16 +58,17 @@ p {
     align-items: center;
 }
 
+/* Styling for the logo */
 .logo2 {
     width: 100px;
 }
 
-
-
+/* Styling for the dropdown box, initially hidden */
 .netflix-dropdown-box {
     display: none;
 }
 
+/* Styling for dropdown button */
 .netflix-dropdown {
     background-color: transparent;
     color: var(--blanco);
@@ -71,6 +76,7 @@ p {
     font-size: 9px;
 }
 
+/* Styling for dropdown menu */
 .netflix-dropdown-box .dropdown-menu {
     background-color: rgba(0, 0, 0, 0.796);
     font-size: 9px !important;
@@ -78,9 +84,9 @@ p {
     margin-left: -80px;
     border-top: 3px solid var(--blanco);
     margin-top: 30px;
-
 }
 
+/* Styling for items in the dropdown menu */
 .netflix-dropdown-box .dropdown-menu .dropdown-item {
     color: rgba(255, 255, 255, 0.769);
     text-align: center !important;
@@ -89,39 +95,40 @@ p {
     padding: 10px 20px;
 }
 
+/* Styling for dropdown items on hover */
 .netflix-dropdown-box .dropdown-menu .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.111);
     color: var(--blanco);
 }
 
+/* Styling for navigation buttons */
 .netflix-nav {
     display: block;
     align-items: center;
-
 }
 
+/* Styling for buttons in the navigation */
 .netflix-nav button {
     background-color: transparent;
     color: rgba(255, 255, 255, 0.729);
     border: none;
     font-size: 13px;
     padding: 1rem;
-
-
 }
 
-
+/* Styling for navigation buttons on hover */
 .netflix-nav button:hover {
     color: var(--blanco);
 }
 
+/* Styling for icons */
 i {
     font-size: 20px;
     color: var(--blanco);
     padding: 5px 20px;
-
 }
 
+/* Styling for profile icon */
 .netflix-profile {
     width: 30px;
     height: 30px;
@@ -131,18 +138,19 @@ i {
     cursor: pointer;
 }
 
-/* video */
+/* Video section styling */
 .netflix-home-video {
     width: 100%;
     position: relative;
     z-index: 10;
 }
 
-
+/* Styling for video */
 .netflix-home-video video {
     width: 100%;
 }
 
+/* Styling for top gradient overlay on video */
 .netflix-home-video .top {
     position: absolute;
     top: 0%;
@@ -151,6 +159,7 @@ i {
     background: linear-gradient(to top, transparent, #000);
 }
 
+/* Styling for bottom gradient overlay on video */
 .netflix-home-video .bottom {
     position: absolute;
     bottom: 0%;
@@ -159,19 +168,20 @@ i {
     background: linear-gradient(to bottom, transparent, #141414);
 }
 
+/* Button styling */
 
-/* botones */
-
+/* Styling for play button */
 .bi-play-fill {
     color: #000;
     padding: 0px;
-
 }
 
+/* Styling for info button */
 .bi-info-circle {
     padding: 0.5rem;
 }
 
+/* Styling for content section of the home video */
 .netflix-home-video .content {
     position: absolute;
     top: 0%;
@@ -180,67 +190,57 @@ i {
     display: flex;
 }
 
+/* Left content section styling */
 .netflix-home-video .left {
     margin-left: 80px;
 }
 
+/* Styling for image in the left content section */
 .netflix-home-video .left img {
     margin-top: 100px !important;
     width: 300px;
     height: 400px;
-
 }
 
+/* Additional image styling */
 .content img {
     margin-top: 3rem;
 }
 
+/* Button styling */
 .btn {
     margin-top: -50px !important;
 }
 
-/* tarjetas */
+/* Card section styling */
 
+/* Grid container for cards */
+#tarjetas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    /* Space between the cards */
+    margin: 16px;
+    text-align: center;
+}
+
+/* Individual card styling */
 .card {
     width: 250px !important;
-    background: #141414;
-    border: 4px !important;
-    transition: 0.2 linear;
+    background: #ff0000;
+    border: 4px solid transparent !important;
+    transition: transform 0.2s linear;
     margin: 3px !important;
     position: relative;
 }
 
+/* Styling for cards on hover */
 .card:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
     z-index: 10;
 }
 
-.card-icon {
-    color: #ffff;
-    padding: 0px !important;
-    font-size: 28px;
-    border-radius: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.slider1 {
-    position: absolute;
-    top: 600px;
-    z-index: 500;
-}
-
-.carousel-inner {
-    position: relative;
-    overflow: visible;
-}
-
-
-.netflix-card-.text {
-    font-size: 12px;
-
-}
-
+/* Card body styling, initially hidden */
 .card-body {
     display: none;
     padding: 10px 15px;
@@ -250,18 +250,12 @@ i {
     width: 100%;
 }
 
-.card:hover>.card-body {
+/* Show card body on hover */
+.card:hover .card-body {
     display: block;
-
 }
 
-
-#tarjetas {
-    margin-left: 300px;
-
-
-}
-
+/* Styling for card title and text */
 .card-title,
 .card-text {
     color: #ffff;
@@ -269,27 +263,52 @@ i {
     font-size: 12px;
 }
 
-.star {
-    color: #ccc;
-    /* Color inicial de las estrellas */
+/* Styling for card icons */
+.card-icon {
+    color: #ffff;
+    padding: 0px !important;
+    font-size: 28px;
+    border-radius: 50%;
     cursor: pointer;
-    /* Cambia el cursor al pasar sobre las estrellas */
-    transition: color 0.3s ease;
-    /* Transición suave para el cambio de color */
 }
 
-/* Color de las estrellas al pasar el mouse sobre ellas */
+/* Slider styling */
+.slider1 {
+    position: absolute;
+    top: 600px;
+    z-index: 500;
+}
+
+/* Carousel inner container styling */
+.carousel-inner {
+    position: relative;
+    overflow: visible;
+}
+
+/* Additional card text styling */
+.netflix-card-.text {
+    font-size: 12px;
+}
+
+/* Star rating styling */
+.star {
+    color: #fffdfd;
+    /* Initial color for stars */
+    cursor: pointer;
+    /* Change cursor on hover */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
+}
+
+/* Styling for stars on hover */
 .star:hover {
     color: #ffc107;
-    /* Color al pasar el mouse sobre las estrellas */
 }
 
-/* Color de las estrellas cuando están llenas */
+/* Styling for filled stars */
 .star.filled {
     color: #ffc107;
-    /* Color cuando las estrellas están llenas */
 }
-
 
 /* Responsive  */
 @media (max-width:767.98px) {
