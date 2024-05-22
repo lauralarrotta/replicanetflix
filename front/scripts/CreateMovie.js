@@ -17,6 +17,10 @@ function limpiarInputs() {
 function initializeForm() {
   // Esperar a que el DOM esté completamente cargado
   document.addEventListener("DOMContentLoaded", () => {
+    document
+      .getElementById("limpiarInputs")
+      .addEventListener("click", limpiarInputs);
+
     // Obtener el formulario por su ID
     const form = document.getElementById("form");
 
@@ -49,6 +53,31 @@ function initializeForm() {
         // Mostrar una alerta si algún campo está vacío y detener la ejecución
         alert("Por favor completa todos los campos.");
         return;
+      }
+      if (
+        !title ||
+        !year ||
+        !director ||
+        !duration ||
+        !genre ||
+        !rate ||
+        !poster
+      ) {
+        return res
+          .status(400)
+          .json({ error: "Todos los datos son obligatorios" });
+      }
+
+      if (isNaN(year) || year.toString().length !== 4) {
+        return res
+          .status(400)
+          .json({ error: "El año debe ser un número de 4 dígitos" });
+      }
+
+      if (isNaN(rate) || rate < 0 || rate > 10) {
+        return res
+          .status(400)
+          .json({ error: "La calificación debe ser un número entre 0 y 10" });
       }
 
       try {
