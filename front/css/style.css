@@ -373,3 +373,7 @@ i {
     }
 
 }
+
+.oculto {
+    display: none;
+}

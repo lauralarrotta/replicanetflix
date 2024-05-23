@@ -1424,13 +1424,6 @@
     </section>
   </div>
 
-
-  <footer>
-    <p>footer</p>
-  </footer>
-
-
-
   <!-- Importa jQuery y Popper.js al final del body -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -1443,6 +1436,57 @@
   <!-- importando Axios en nuestro documento HTML -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+  <section class="oculto">
+    <div class="form-container">
+      <form class="form" id="form">
+        <!-- Title -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input name="title" id="title" type="text" placeholder="Movie title">
+        </div><!-- .Title -->
+
+        <!-- Year -->
+        <div class="form-group">
+          <label for="year">Year</label>
+          <input name="year" id="year" type="number" placeholder="Year">
+        </div><!-- .Year -->
+
+        <!-- Director -->
+        <div class="form-group">
+          <label for="Director">Director</label>
+          <input name="Director" id="Director" type="text" placeholder="Director">
+        </div><!-- .Director -->
+
+        <!-- Duration -->
+        <div class="form-group">
+          <label for="Duration">Duration</label>
+          <input name="Duration" id="Duration" type="text" placeholder="Duration">
+        </div><!-- .Duration -->
+
+        <!-- Genre -->
+        <div class="form-group">
+          <label for="Genre">Genre</label>
+          <input name="Genre" id="Genre" type="text" placeholder="Genre">
+        </div><!-- .Genre -->
+
+        <!-- Rate -->
+        <div class="form-group">
+          <label for="rate">Rate</label>
+          <input name="rate" id="rate" step="0.01" type="number" placeholder="Rate">
+        </div><!-- .Rate -->
+
+        <!-- Poster -->
+        <div class="form-group">
+          <label for="url">Poster</label>
+          <input name="url" id="url" type="url" placeholder="URL .jpg">
+        </div><!-- .Poster -->
+        <!-- Send -->
+        <button type="submit" class="form-submit-btn">Submit</button>
+        <!-- .Send -->
+        <button type="button" id="limpiarInputs" class="form-submit-btn">Clear</button>
+      </form>
+    </div>
+  </section>
 
 </body>
 
